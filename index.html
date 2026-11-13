@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore a month of Bluebikes traffic in Boston and Cambridge.">
+  <title>Bikewatching — Boston bike share</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script type="module" src="map.js"></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">Boston & Cambridge <span aria-hidden="true">/</span> March 2024</p>
+        <h1>Bikewatching</h1>
+        <p>Explore where Bluebikes trips start and end throughout the day.</p>
+      </div>
+      <a class="portfolio" href="https://rishilc1.github.io/DSC-106-Portfolio/projects/">← Portfolio</a>
+    </header>
+
+    <div class="explorer">
+      <section class="map-card" aria-label="Bike traffic map">
+        <div id="map" aria-label="Interactive map of Bluebikes traffic in greater Boston"></div>
+        <div class="legend" aria-label="Map legend">
+          <span><i class="swatch arrival"></i>More arrivals</span>
+          <span><i class="swatch balanced"></i>Balanced</span>
+          <span><i class="swatch departure"></i>More departures</span>
+          <span><i class="swatch lane"></i>Bike lanes</span>
+        </div>
+      </section>
+
+      <aside class="controls" aria-label="Traffic controls and station details">
+        <section>
+          <h2><label for="time-slider">Time of day</label></h2>
+          <output id="time-display" for="time-slider">Any time</output>
+          <input id="time-slider" type="range" min="-1" max="1439" value="-1" step="1"
+                 aria-describedby="time-help" aria-valuetext="Any time" disabled>
+          <div class="ticks" aria-hidden="true"><span>12 AM</span><span>12 PM</span><span>12 AM</span></div>
+          <p id="time-help">Filters arrivals and departures within one hour either side of the selected Boston time.</p>
+          <div class="presets">
+            <button data-time="480" disabled>8 AM</button>
+            <button data-time="1020" disabled>5 PM</button>
+            <button data-time="-1" disabled>Any time</button>
+          </div>
+        </section>
+        <section aria-labelledby="traffic-heading">
+          <h2 id="traffic-heading">Traffic across all stations</h2>
+          <dl class="totals">
+            <div><dt>Departures</dt><dd id="departure-count">—</dd></div>
+            <div><dt>Arrivals</dt><dd id="arrival-count">—</dd></div>
+          </dl>
+          <p>Circle area represents traffic volume. Larger circles mean more arrivals and departures combined.</p>
+          <p id="map-status" role="status">Loading the map and trip data…</p>
+        </section>
+        <section class="station" aria-labelledby="station-heading">
+          <h2 id="station-heading">Station details</h2>
+          <p id="station-name">Hover over or select a station to see exact counts.</p>
+          <p id="station-counts" hidden></p>
+        </section>
+      </aside>
+    </div>
+    <footer>
+      <p>Traffic counts include rides with a matching station ID. Colors show departure share: under one-third, one-third to under two-thirds, and two-thirds or more.</p>
+      <p>Data: <a href="https://dsc106.com/labs/lab07/">DSC 106 / Bluebikes</a>,
+        <a href="https://bostonopendata-boston.opendata.arcgis.com/datasets/boston::existing-bike-network-2022">City of Boston</a>,
+        <a href="https://github.com/cambridgegis/cambridgegis_data/tree/main/Recreation/Bike_Facilities">City of Cambridge</a>.</p>
+    </footer>
+    <noscript>Enable JavaScript to explore the map.</noscript>
+  </main>
+</body>
+</html>
