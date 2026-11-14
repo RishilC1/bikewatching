@@ -13,4 +13,4 @@ To publish, add this existing repository to GitHub Desktop and publish it as `Ri
 
 To regenerate the browser assets, save these four inputs as `stations.json`, `trips.csv`, `boston.geojson`, and `cambridge.geojson` in a separate directory, then run `python3 scripts/prepare_data.py /path/to/inputs`.
 
-Departure and arrival counts use their respective Boston wall-clock timestamps. A time filter includes the selected minute and the 60 minutes on either side, wrapping across midnight. An endpoint only counts when its station ID matches the station file. Map panning does not change the aggregate counts in the sidebar.
+Departure and arrival counts use their respective Boston wall-clock timestamps. A time filter includes the selected minute and the 60 minutes on either side, wrapping across midnight. An endpoint only counts when its station ID matches the station file. Map panning does not change the aggregate counts in the sidebar
